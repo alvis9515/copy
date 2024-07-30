@@ -1,5 +1,5 @@
 - name: Crear el archivo con el nombre del servidor en el nombre del archivo
   copy:
     content: "Este archivo fue creado en el servidor: {{ ansible_hostname }}"
-    dest: "/homw/awx/{{ ansible_hostname }}.txt"
+    dest: "/home/awx/{{ ansible_hostname }}.txt"
     mode: '0644'
