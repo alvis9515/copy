@@ -14,7 +14,7 @@
       expect:
         command: "sftp awx@{{ item.ip }}:/home/awx/{{ item.filename }} /home/awx/"
         responses:
-          (.*)password:": "1595"
+          (.*)password:: "1595"
       loop: "{{ servers }}"
       loop_control:
         loop_var: item
