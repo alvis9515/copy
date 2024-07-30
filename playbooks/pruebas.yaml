@@ -10,17 +10,11 @@
       - ip: "192.168.0.11"
         filename: "pruebas.txt"
   tasks:
-    - name: Set fact for each server
-      set_fact:
-        current_ip: "{{ item.ip }}"
-        current_filename: "{{ item.filename }}"
-      loop: "{{ servers }}"
-    
     - name: Copy file using sftp from remote servers
       expect:
-        command: "sftp awx@{{ current_ip }}:/home/awx/{{ current_filename }} /home/awx/"
+        command: "sftp awx@{{ item.ip }}:/home/awx/{{ item.filename }} /home/awx/"
         responses:
-          "awx@{{ current_ip }}'s password:": "1595"
+          "awx@{{ item.ip }}'s password:": "1595"
       loop: "{{ servers }}"
       loop_control:
         loop_var: item
