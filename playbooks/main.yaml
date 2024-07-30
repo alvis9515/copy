@@ -1,0 +1,7 @@
+---
+- name: Iniciar creacion de archivos
+  hosts: linux
+  tasks:
+    - name: creacion
+      include_role:
+        name: roles/crear

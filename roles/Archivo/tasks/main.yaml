@@ -1,0 +1,5 @@
+- name: Copy file using sftp from remote servers
+  expect:
+    command: sftp awx@192.168.0.12:/home/awx/texto1.txt /ctir/
+    responses:
+      "awx@192.168.0.12's password:": "1595"

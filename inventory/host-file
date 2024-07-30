@@ -1,0 +1,7 @@
+[linux]
+ubuntu          ansible_host=192.168.0.10
+OL2             ansible_host=192.168.0.12
+todok3s         ansible_host=192.168.0.11
+
+[awx]
+Serawx          ansible_host=192.168.0.8
