@@ -1,0 +1,26 @@
+---
+- name: Copy files using sftp from remote servers
+  hosts: awx
+  vars:
+    servers:
+      - ip: "192.168.0.10"
+        filename: "pruebasubuntu.txt"
+      - ip: "192.168.0.12"
+        filename: "pruebas2.txt"
+      - ip: "192.168.0.11"
+        filename: "pruebas.txt"
+  tasks:
+    - name: Set fact for each server
+      set_fact:
+        current_ip: "{{ item.ip }}"
+        current_filename: "{{ item.filename }}"
+      loop: "{{ servers }}"
+    
+    - name: Copy file using sftp from remote servers
+      expect:
+        command: "sftp awx@{{ current_ip }}:/home/awx/{{ current_filename }} /ctir/"
+        responses:
+          "awx@{{ current_ip }}'s password:": "1595"
+      loop: "{{ servers }}"
+      loop_control:
+        loop_var: item
