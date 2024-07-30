@@ -18,7 +18,7 @@
     
     - name: Copy file using sftp from remote servers
       expect:
-        command: "sftp awx@{{ current_ip }}:/home/awx/{{ current_filename }} /ctir/"
+        command: "sftp awx@{{ current_ip }}:/home/awx/{{ current_filename }} /home/awx/"
         responses:
           "awx@{{ current_ip }}'s password:": "1595"
       loop: "{{ servers }}"
